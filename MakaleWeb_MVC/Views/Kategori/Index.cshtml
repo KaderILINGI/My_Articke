@@ -1,0 +1,73 @@
+﻿@model IEnumerable<MakaleEntities.Kategori>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <h2>Kategoriler</h2>
+        <hr />
+    </div>
+   
+</div>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+
+        <p>
+            @Html.ActionLink("Yeni Kayıt", "Create", null, new { @class = "btn btn-primary" })
+        </p>
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Baslik)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Aciklama)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.KayitTarihi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DegistirmeTarihi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DegistirenKullanici)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Baslik)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Aciklama)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KayitTarihi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DegistirmeTarihi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DegistirenKullanici)
+                    </td>
+                    <td>
+                        @MyHelper.LinkButton("/Kategori/Edit/" + item.Id, "Link", "success", "btn-xs", "edit", "Düzenle")
+                        @*@Html.ActionLink("Düzenle", "Edit", new { id = item.Id }, new {@class="btn btn-success btn-xs"})*@
+                        @MyHelper.LinkButton("/Kategori/Details/" + item.Id, "Link", "warning", "btn-xs", "search", "Detay")
+                        @*@Html.ActionLink("Detay", "Details", new { id = item.Id }, new { @class = "btn btn-warning btn-xs" })*@
+                        @MyHelper.LinkButton("/Kategori/Delete/" + item.Id, "Link", "danger", "btn-xs", "trash", "Sil")
+                        @*@Html.ActionLink("Sil", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-xs" })*@
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>

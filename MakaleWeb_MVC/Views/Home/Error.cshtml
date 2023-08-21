@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Error";
+}
+
+
+
+<link href="~/Content/LoginCSS.css" rel="stylesheet" />
+
+@using (Html.BeginForm())
+{
+
+    <section class="login-info">
+        <div class="container">
+            <div class="row main">
+                <div class="form-header">
+                    <h1 class="text-center "><span class="glyphicon glyphicon-remove"></span>Geçersiz İşlem</h1>
+                </div>
+                <div class="main-content">
+
+                    
+                    <div class="text-danger ">
+                        <p>
+                            @foreach (string item in (List<string>)ViewBag.hatalar)
+                            {
+                                @item
+                                <br />
+
+                            }
+                        </p>
+                        @*<button type="submit" class="btn btn-danger btn-lg btn-block login-button">Giriş</button>*@
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+}
